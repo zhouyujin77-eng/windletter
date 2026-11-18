@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f0e6">
+
+    <title>晚风邮局 | WINDLETTER</title>
+    <meta name="description" content="一款关于信件、记忆与重逢的治愈系互动叙事游戏。">
+
+    <!-- 游戏样式 -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+    <!-- ================= 首页 ================= -->
+    <section id="home-page" class="page home-page">
+
+        <header class="home-header">
+            <div class="logo">WINDLETTER</div>
+            <div class="logo-subtitle">晚风邮局</div>
+        </header>
+
+        <main class="home-content">
+            <div class="home-decoration">
+                <!-- 首页背景插画位置 -->
+            </div>
+
+            <div class="home-title">
+                <h1>晚风邮局</h1>
+                <p>有些话，值得被认真送达。</p>
+            </div>
+
+            <div class="home-buttons">
+                <button id="new-game-btn">开始游戏</button>
+                <button id="continue-game-btn">继续旅程</button>
+                <button id="settings-btn">游戏设置</button>
+            </div>
+        </main>
+
+        <footer class="home-footer">
+            <p>WINDLETTER · A STORY ABOUT LETTERS AND LIFE</p>
+        </footer>
+
+    </section>
+
+
+    <!-- ================= 游戏主界面 ================= -->
+    <section id="game-page" class="page game-page" hidden>
+
+        <!-- 顶部状态栏 -->
+        <header class="game-header">
+
+            <div class="game-logo">晚风邮局</div>
+
+            <div class="player-status">
+                <span>金币：<strong id="gold">100</strong></span>
+                <span>声望：<strong id="reputation">0</strong></span>
+                <span>满意度：<strong id="satisfaction">100</strong></span>
+            </div>
+
+        </header>
+
+
+        <!-- 游戏主体 -->
+        <main class="game-main">
+
+            <!-- 左侧导航 -->
+            <nav class="game-sidebar">
+                <button data-page="office">邮局</button>
+                <button data-page="letters">信件</button>
+                <button data-page="town">小镇</button>
+                <button data-page="inventory">背包</button>
+                <button data-page="dashboard">经营数据</button>
+            </nav>
+
+
+            <!-- 内容展示区域 -->
+            <section class="game-content">
+
+                <!-- 邮局经营 -->
+                <div id="office-view" class="game-view">
+                    <h2>雾汀镇 · 晚风邮局</h2>
+                    <p>欢迎回来，邮局的新主人。</p>
+                    <div class="office-scene">
+                        <!-- 邮局场景插画 -->
+                    </div>
+                </div>
+
+                <!-- 信件系统 -->
+                <div id="letters-view" class="game-view" hidden>
+                    <h2>待处理的信件</h2>
+                    <div id="letter-list"></div>
+                </div>
+
+                <!-- 小镇探索 -->
+                <div id="town-view" class="game-view" hidden>
+                    <h2>雾汀镇</h2>
+                    <div id="town-map"></div>
+                </div>
+
+                <!-- 背包系统 -->
+                <div id="inventory-view" class="game-view" hidden>
+                    <h2>我的背包</h2>
+                    <div id="inventory-list"></div>
+                </div>
+
+                <!-- 经营数据 -->
+                <div id="dashboard-view" class="game-view" hidden>
+                    <h2>邮局经营报告</h2>
+                    <div id="analytics-panel"></div>
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- 底部信息 -->
+        <footer class="game-footer">
+            <span>WINDLETTER</span>
+            <span>让每一封信，都有抵达的地方。</span>
+        </footer>
+
+    </section>
+
+
+    <!-- 游戏程序入口 -->
+    <script src="js/main.js"></script>
+
+</body>
+</html>

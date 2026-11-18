@@ -1,0 +1,1911 @@
+
+/* ======================================
+   WINDLETTER | 晚风邮局
+   完整视觉系统 V1.2
+====================================== */
+
+:root {
+    --cream: #f5f0e6;
+    --paper: #fffaf0;
+    --green: #788b72;
+    --deep-green: #455b4b;
+    --light-green: #dce4d5;
+    --brown: #8d7058;
+    --terracotta: #c58b70;
+    --text: #41483e;
+    --muted: #8d9184;
+    --shadow: 0 12px 35px rgba(76,75,57,.10);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+    max-width: 100%;
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    color: var(--text);
+}
+
+body {
+    background: var(--cream);
+    overflow-x: hidden;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.page {
+    min-height: 100vh;
+}
+
+/* ========== 首页 ========== */
+
+.home-page {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 35px 24px 25px;
+
+    background:
+        radial-gradient(ellipse at 50% 70%, #dce3d3, transparent 55%),
+        linear-gradient(145deg, #f8f3e9, #e8e8d9);
+}
+
+.home-header,
+.home-content,
+.home-footer {
+    position: relative;
+    z-index: 1;
+}
+
+.home-header {
+    text-align: center;
+}
+
+.logo {
+    font-family: Georgia, serif;
+    letter-spacing: 5px;
+    font-size: 19px;
+    color: var(--deep-green);
+}
+
+.logo-subtitle {
+    margin-top: 7px;
+    letter-spacing: 7px;
+    font-size: 12px;
+    color: var(--brown);
+}
+
+.home-content {
+    width: min(100%, 620px);
+    padding: 35px 25px;
+    text-align: center;
+}
+
+.home-decoration {
+    width: 190px;
+    height: 150px;
+    margin: 0 auto 28px;
+    position: relative;
+    border-radius: 48% 48% 12px 12px;
+    background: linear-gradient(145deg, #a6b49a, #71866e);
+    box-shadow: var(--shadow);
+}
+
+.home-decoration::before {
+    content: "✉";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: #fff5e5;
+    font-size: 72px;
+}
+
+.home-decoration::after {
+    content: "晚风";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 20px;
+    border-radius: 20px;
+    background: var(--paper);
+    color: var(--deep-green);
+    font-size: 13px;
+    letter-spacing: 4px;
+}
+
+.home-title h1 {
+    margin: 0;
+    font-family: Georgia, "Songti SC", serif;
+    font-size: clamp(38px, 7vw, 58px);
+    font-weight: 500;
+    letter-spacing: 10px;
+    color: var(--deep-green);
+}
+
+.home-title p {
+    margin: 18px 0 32px;
+    color: var(--brown);
+    letter-spacing: 3px;
+    font-size: 15px;
+}
+
+.home-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+}
+
+.home-buttons button {
+    width: 210px;
+    padding: 13px 20px;
+    border: 1px solid rgba(69,91,75,.3);
+    border-radius: 30px;
+    color: var(--deep-green);
+    background: rgba(255,250,240,.75);
+    transition: .25s ease;
+}
+
+.home-buttons button:first-child {
+    color: white;
+    background: var(--deep-green);
+}
+
+.home-buttons button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.home-footer {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-align: center;
+}
+
+/* ========== 游戏主界面 ========== */
+
+.game-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #f1eee5;
+}
+
+.game-header {
+    min-height: 76px;
+    padding: 15px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    background: var(--paper);
+    border-bottom: 1px solid #e6e0d3;
+}
+
+.game-logo {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    letter-spacing: 5px;
+    color: var(--deep-green);
+}
+
+.player-status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 13px;
+    color: var(--brown);
+}
+
+.player-status strong {
+    color: var(--deep-green);
+}
+
+.game-main {
+    width: min(1200px, 94%);
+    margin: 35px auto;
+    display: grid;
+    grid-template-columns: 190px minmax(0,1fr);
+    gap: 25px;
+    flex: 1;
+}
+
+.game-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.game-sidebar button {
+    padding: 15px;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--text);
+    text-align: left;
+    transition: .2s;
+}
+
+.game-sidebar button:hover,
+.game-sidebar button.active {
+    background: var(--deep-green);
+    color: white;
+}
+
+.game-content {
+    min-width: 0;
+    min-height: 430px;
+    padding: clamp(22px,5vw,45px);
+    border-radius: 18px;
+    background: var(--paper);
+    box-shadow: var(--shadow);
+}
+
+.game-view h2 {
+    margin-top: 0;
+    color: var(--deep-green);
+    font-family: Georgia, "Songti SC", serif;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.game-view p {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+/* ========== 邮局场景 ========== */
+
+.office-scene {
+    position: relative;
+    width: 100%;
+    min-height: 480px;
+    margin-top: 25px;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: 22px;
+
+    background:
+        radial-gradient(ellipse at 50% 18%,
+            rgba(255,249,224,.95),
+            transparent 45%),
+        linear-gradient(180deg,
+            #c8d2bd 0%,
+            #dce0c9 55%,
+            #e8d9bd 100%);
+
+    box-shadow: var(--shadow);
+}
+
+/* 窗户 */
+.office-scene::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 42%;
+    height: 54%;
+    top: 8%;
+    left: 29%;
+    border: 12px solid #f5ead5;
+    border-radius: 12px;
+
+    background:
+        linear-gradient(90deg,
+            transparent 48%,
+            #f5ead5 48%,
+            #f5ead5 52%,
+            transparent 52%),
+        linear-gradient(180deg,
+            transparent 48%,
+            #f5ead5 48%,
+            #f5ead5 52%,
+            transparent 52%),
+        linear-gradient(135deg,#e8edda,#b8c9ae);
+
+    box-shadow: 0 8px 25px rgba(65,76,57,.12);
+}
+
+/* 木质柜台 */
+.office-scene::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: -3%;
+    right: -3%;
+    bottom: -2%;
+    height: 30%;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 28px,
+            rgba(111,76,49,.12) 29px 31px
+        ),
+        linear-gradient(180deg,#bd9870,#a77c56);
+
+    border-top: 12px solid #e1bd91;
+}
+
+/* 场景文字 */
+.office-scene > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* ========== 底部 ========== */
+
+.game-footer {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* ========== 手机适配 ========== */
+
+@media (max-width:700px) {
+    .game-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .player-status {
+        gap: 10px;
+        font-size: 12px;
+    }
+
+    .game-main {
+        grid-template-columns: 1fr;
+        margin: 20px auto;
+    }
+
+    .game-sidebar {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+
+    .game-sidebar button {
+        flex-shrink: 0;
+        padding: 11px 15px;
+        text-align: center;
+    }
+
+    .game-content {
+        min-height: 350px;
+    }
+
+    .office-scene {
+        min-height: 380px;
+        border-radius: 16px;
+    }
+
+    .office-scene::before {
+        width: 65%;
+        left: 17.5%;
+        height: 45%;
+    }
+
+    .office-scene::after {
+        height: 27%;
+    }
+
+    .home-title h1 {
+        letter-spacing: 6px;
+    }
+}
+
+/* ======================================
+   WINDLETTER | 第一封信交互界面
+====================================== */
+
+#first-letter-panel {
+    margin-top: 25px;
+}
+
+.letter-notice,
+.list-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    margin: 15px 0;
+    border: 1px solid #e9e2d3;
+    border-radius: 14px;
+    background: #fffdf7;
+}
+
+.notice-icon {
+    font-size: 32px;
+    color: #a77c56;
+}
+
+.letter-notice h3,
+.list-card h3 {
+    margin: 0 0 7px;
+    color: #455b4b;
+}
+
+.letter-notice p,
+.list-card p {
+    margin: 0;
+    font-size: 13px;
+    color: #8d9184;
+}
+
+.completed-mark {
+    margin-left: auto;
+    white-space: nowrap;
+    color: #788b72;
+    font-size: 13px;
+}
+
+.primary-action {
+    margin-top: 20px;
+    padding: 13px 28px;
+    border: 0;
+    border-radius: 30px;
+    background: #455b4b;
+    color: white;
+    transition: .2s;
+}
+
+.primary-action:hover {
+    background: #607a63;
+    transform: translateY(-2px);
+}
+
+.story-paper,
+.result-paper {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(22px, 5vw, 48px);
+    border: 1px solid #e8dfce;
+    border-radius: 16px;
+    background: #fffaf0;
+    box-shadow: 0 12px 35px rgba(76,75,57,.08);
+}
+
+.story-label {
+    color: #a28a6d;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.story-paper h2,
+.result-paper h2 {
+    margin-top: 22px;
+    color: #455b4b;
+    font-family: Georgia, "Songti SC", serif;
+    font-weight: 500;
+}
+
+.story-intro {
+    color: #a28a6d;
+    font-size: 13px;
+}
+
+.letter-content {
+    margin: 28px 0;
+    padding: 25px;
+    border-top: 1px solid #e8dfce;
+    border-bottom: 1px solid #e8dfce;
+    color: #625b4d;
+    line-height: 2.1;
+}
+
+.letter-signature {
+    text-align: right;
+    color: #9c8063;
+}
+
+.story-question {
+    margin-top: 30px;
+}
+
+.story-question h3 {
+    color: #455b4b;
+}
+
+.story-question > p {
+    font-size: 13px;
+}
+
+.choice-button {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 15px;
+    border: 1px solid #d9dfd0;
+    border-radius: 10px;
+    background: #f4f5ec;
+    color: #455b4b;
+    text-align: left;
+    transition: .2s;
+}
+
+.choice-button:hover {
+    background: #e4eadc;
+    border-color: #788b72;
+    transform: translateX(3px);
+}
+
+.result-paper {
+    text-align: center;
+}
+
+.result-icon {
+    font-size: 42px;
+    color: #b58d68;
+}
+
+.result-paper > p {
+    line-height: 2;
+}
+
+.reward-panel,
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.reward-panel span,
+.stat-card {
+    padding: 17px;
+    border-radius: 12px;
+    background: #edf0e6;
+    color: #52664f;
+}
+
+.result-note {
+    color: #9c8063;
+    font-size: 13px;
+}
+
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stat-card strong {
+    font-size: 25px;
+}
+
+@media (max-width: 600px) {
+    .letter-notice {
+        align-items: flex-start;
+    }
+
+    .completed-mark {
+        display: none;
+    }
+
+    .reward-panel,
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .story-paper,
+    .result-paper {
+        padding: 22px 18px;
+    }
+}
+
+/* =========================================
+   WINDLETTER V2.0 | 游戏系统升级样式
+========================================= */
+
+.eyebrow {
+    color: #a28a6d !important;
+    font-size: 10px !important;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.office-heading,
+.town-topline,
+.progress-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.office-weather {
+    padding: 9px 15px;
+    border-radius: 30px;
+    background: #edf0e6;
+    color: #65775e;
+    font-size: 12px;
+}
+
+.office-scene {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.scene-sign {
+    margin-top: 230px;
+    padding: 10px 28px;
+    border: 3px solid #ead3ae;
+    border-radius: 5px;
+    background: #8d7058;
+    color: #fff8e9;
+    font-family: Georgia, "Songti SC", serif;
+    font-size: 22px;
+    letter-spacing: 6px;
+    box-shadow: 0 5px 15px #66513b35;
+}
+
+.scene-counter-label {
+    position: absolute;
+    bottom: 9%;
+    color: #fff4df;
+    font-family: Georgia, serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.office-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.summary-item {
+    padding: 17px;
+    border: 1px solid #e9e2d3;
+    border-radius: 13px;
+    background: #fffdf7;
+}
+
+.summary-item span,
+.summary-item strong {
+    display: block;
+}
+
+.summary-item span {
+    margin-bottom: 8px;
+    color: #8d9184;
+    font-size: 12px;
+}
+
+.summary-item strong {
+    color: #455b4b;
+    font-size: 15px;
+}
+
+.office-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.secondary-action,
+.back-action {
+    margin-top: 20px;
+    padding: 12px 22px;
+    border: 1px solid #d9dfd0;
+    border-radius: 30px;
+    background: transparent;
+    color: #52664f;
+}
+
+.secondary-action:hover,
+.back-action:hover {
+    background: #edf0e6;
+}
+
+.save-hint {
+    font-size: 11px !important;
+}
+
+.section-intro {
+    margin-bottom: 24px;
+    line-height: 1.8;
+}
+
+.letter-grid,
+.town-grid,
+.inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.letter-card,
+.place-card,
+.inventory-card {
+    padding: 21px;
+    border: 1px solid #e9e2d3;
+    border-radius: 15px;
+    background: #fffdf7;
+    transition: .2s ease;
+}
+
+.letter-card:hover,
+.place-card:hover,
+.inventory-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.letter-card-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    color: #8d9184;
+    font-size: 11px;
+}
+
+.letter-number {
+    color: #a28a6d;
+    letter-spacing: 2px;
+}
+
+.letter-card h3,
+.place-card h3,
+.inventory-card h3 {
+    margin: 17px 0 9px;
+    color: #455b4b;
+    font-size: 17px;
+}
+
+.letter-card p,
+.place-card p,
+.inventory-card p {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.letter-card.is-complete {
+    background: #f1f3eb;
+}
+
+.letter-card.is-locked {
+    opacity: .62;
+}
+
+.text-action {
+    margin-top: 12px;
+    padding: 8px 0;
+    border: 0;
+    background: transparent;
+    color: #607a63;
+    font-weight: 600;
+}
+
+.text-action:hover {
+    color: #a77c56;
+}
+
+.place-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.place-icon {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border-radius: 14px;
+    background: #edf0e6;
+    font-size: 25px;
+}
+
+.place-info {
+    flex: 1;
+}
+
+.place-info span {
+    color: #8d9a7c;
+    font-size: 11px;
+}
+
+.place-detail {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 25px;
+    text-align: center;
+}
+
+.place-detail-icon {
+    margin: 30px 0 15px;
+    font-size: 65px;
+}
+
+.npc-dialogue {
+    margin: 28px 0;
+    padding: 25px;
+    border-radius: 15px;
+    background: #f0f1e8;
+    text-align: left;
+}
+
+.npc-dialogue span {
+    color: #8d7058;
+    font-size: 12px;
+}
+
+.npc-dialogue p {
+    margin-bottom: 0;
+    color: #455b4b;
+    font-family: Georgia, "Songti SC", serif;
+    font-size: 18px;
+    line-height: 2;
+}
+
+.explore-reward {
+    color: #8d7058 !important;
+    font-size: 13px;
+}
+
+.inventory-card {
+    text-align: center;
+}
+
+.inventory-item-icon {
+    color: #a77c56;
+    font-size: 30px;
+}
+
+.inventory-card span {
+    color: #8d9184;
+    font-size: 12px;
+}
+
+.empty-state {
+    padding: 45px 15px;
+    text-align: center;
+}
+
+.empty-state > div {
+    font-size: 48px;
+}
+
+.empty-state h3 {
+    color: #455b4b;
+}
+
+.progress-section,
+.log-section {
+    margin: 30px 0;
+}
+
+.progress-track {
+    height: 10px;
+    margin-top: 13px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #e8e9df;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: #788b72;
+    transition: width .3s ease;
+}
+
+.log-section h3 {
+    color: #455b4b;
+}
+
+.log-item {
+    padding: 13px 0;
+    border-bottom: 1px solid #eee8dc;
+}
+
+.log-item span {
+    color: #a28a6d;
+    font-size: 11px;
+}
+
+.log-item p {
+    margin: 5px 0 0;
+    color: #596052;
+    font-size: 13px;
+}
+
+.item-reward {
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 12px;
+    background: #edf0e6;
+}
+
+.item-reward span,
+.item-reward strong {
+    display: block;
+}
+
+.item-reward span {
+    margin-bottom: 7px;
+    color: #8d9184;
+    font-size: 12px;
+}
+
+.item-reward strong {
+    color: #52664f;
+}
+
+.settings-content {
+    min-width: min(380px, 80vw);
+    padding: 28px;
+}
+
+.settings-content h2 {
+    color: #455b4b;
+    font-family: Georgia, "Songti SC", serif;
+    font-weight: 500;
+}
+
+.settings-content p {
+    color: #8d9184;
+    line-height: 1.8;
+}
+
+.settings-actions {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.settings-actions button {
+    padding: 12px;
+    border: 1px solid #d9dfd0;
+    border-radius: 10px;
+    background: #fffdf7;
+    color: #455b4b;
+}
+
+.settings-actions .danger-button {
+    color: #a65f4f;
+    border-color: #e8c9bd;
+}
+
+#settings-dialog {
+    border: 1px solid #e8dfce;
+    border-radius: 18px;
+    background: #fffaf0;
+    color: #41483e;
+    box-shadow: 0 20px 70px #0002;
+}
+
+#settings-dialog::backdrop {
+    background: #28342c88;
+}
+
+@media (max-width: 700px) {
+    .office-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .letter-grid,
+    .town-grid,
+    .inventory-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .office-heading {
+        align-items: flex-start;
+    }
+
+    .scene-sign {
+        margin-top: 190px;
+    }
+
+    .office-actions {
+        flex-direction: column;
+    }
+
+    .office-actions button {
+        width: 100%;
+    }
+}
+
+/* =========================================
+   WINDLETTER V2.1 | 可互动邮局场景
+========================================= */
+
+.office-room {
+    position: relative;
+    width: 100%;
+    height: 390px;
+    margin: 25px 0 12px;
+    overflow: hidden;
+    isolation: isolate;
+    border: 8px solid #e8dcc6;
+    border-radius: 17px;
+    background:
+        linear-gradient(90deg, transparent 49.5%, #d9c5a8 50%, transparent 50.5%),
+        linear-gradient(#f3e8d4 0 68%, #c5a17e 68% 100%);
+    box-shadow: inset 0 0 35px #806b4b20, 0 12px 30px #66513b18;
+}
+
+.room-window {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    width: 245px;
+    height: 175px;
+    transform: translateX(-50%);
+    overflow: hidden;
+    border: 10px solid #a47d5e;
+    border-radius: 7px;
+    background: #c5d9d0;
+    box-shadow: 0 5px 12px #725b4430;
+}
+
+.window-sky {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(#b9d4d0, #e6dfc2);
+}
+
+.window-sun {
+    position: absolute;
+    top: 22px;
+    right: 35px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #f4d99b;
+    box-shadow: 0 0 25px #f4d99b99;
+}
+
+.window-hill {
+    position: absolute;
+    bottom: -35px;
+    width: 180px;
+    height: 105px;
+    border-radius: 50% 50% 0 0;
+}
+
+.hill-one {
+    left: -40px;
+    background: #8fa58b;
+}
+
+.hill-two {
+    right: -60px;
+    bottom: -48px;
+    background: #a8b49a;
+}
+
+.window-cross {
+    position: absolute;
+    inset: 0;
+    border-left: 5px solid #a47d5e;
+    border-right: 5px solid #a47d5e;
+    margin: 0 45%;
+}
+
+.window-cross::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -100px;
+    width: 200px;
+    height: 5px;
+    background: #a47d5e;
+}
+
+.room-clock {
+    position: absolute;
+    top: 35px;
+    right: 8%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #8b7157;
+    font-family: Georgia, serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.room-clock strong {
+    display: grid;
+    width: 46px;
+    height: 46px;
+    margin-top: 8px;
+    place-items: center;
+    border: 3px solid #a88867;
+    border-radius: 50%;
+    background: #fff4df;
+    font-size: 22px;
+}
+
+.room-object {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    transition: transform .2s ease, filter .2s ease;
+}
+
+.room-object:hover {
+    z-index: 5;
+    transform: translateY(-5px) scale(1.05);
+    filter: drop-shadow(0 5px 5px #55432d33);
+}
+
+.room-object:focus-visible {
+    outline: 2px dashed #788b72;
+    outline-offset: 4px;
+}
+
+.object-icon {
+    font-size: 38px;
+    filter: drop-shadow(0 3px 2px #0002);
+}
+
+.object-label,
+.mascot-name {
+    margin-top: 5px;
+    padding: 4px 9px;
+    border-radius: 20px;
+    background: #fffaf0e8;
+    color: #6d735f;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.letter-shelf {
+    top: 105px;
+    left: 8%;
+    width: 105px;
+    height: 100px;
+    border: 7px solid #9c785a;
+    border-bottom-width: 12px;
+    border-radius: 4px;
+    background: #c9a47c;
+}
+
+.letter-shelf .object-icon {
+    font-size: 29px;
+}
+
+.shelf-paper {
+    position: absolute;
+    top: 13px;
+    width: 17px;
+    height: 23px;
+    border: 1px solid #c4a77e;
+    background: #fff2d9;
+}
+
+.paper-a { left: 12px; transform: rotate(-8deg); }
+.paper-b { left: 39px; transform: rotate(5deg); }
+.paper-c { right: 10px; transform: rotate(10deg); }
+
+.plant-object {
+    bottom: 78px;
+    left: 7%;
+}
+
+.plant-object .object-icon {
+    font-size: 43px;
+}
+
+.counter-object {
+    bottom: 30px;
+    left: 50%;
+    width: 270px;
+    height: 105px;
+    transform: translateX(-50%);
+    border-radius: 8px 8px 3px 3px;
+    background: linear-gradient(90deg, #987151, #b28b65, #8c684c);
+    box-shadow: 0 9px 0 #79573f, 0 13px 18px #55432d35;
+}
+
+.counter-object:hover {
+    transform: translateX(-50%) translateY(-5px) scale(1.03);
+}
+
+.counter-top {
+    position: absolute;
+    top: -13px;
+    left: -8px;
+    width: calc(100% + 16px);
+    height: 17px;
+    border-radius: 5px;
+    background: #d0aa7e;
+    box-shadow: 0 3px 4px #60462d33;
+}
+
+.counter-sign {
+    margin-top: 12px;
+    color: #fff0d9;
+    font-family: Georgia, serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+}
+
+.counter-stamp {
+    position: absolute;
+    top: 20px;
+    right: 22px;
+    color: #f5dfb9;
+    font-size: 22px;
+}
+
+.counter-object .object-label {
+    position: absolute;
+    bottom: -30px;
+}
+
+.clock-object {
+    top: 110px;
+    right: 12%;
+}
+
+.clock-face {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border: 4px solid #a88867;
+    border-radius: 50%;
+    background: #fff4df;
+    color: #8b7157;
+    font-size: 29px;
+}
+
+.mascot-object {
+    right: 5%;
+    bottom: 35px;
+}
+
+.mascot-sprite {
+    font-size: 45px;
+    animation: mascot-float 2.5s ease-in-out infinite;
+}
+
+@keyframes mascot-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-7px); }
+}
+
+.room-floor {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 24px;
+    background: repeating-linear-gradient(
+        90deg,
+        #a77e5d 0 65px,
+        #b58d6b 65px 130px
+    );
+}
+
+.room-rug {
+    position: absolute;
+    z-index: 1;
+    bottom: 12px;
+    left: 50%;
+    width: 340px;
+    height: 45px;
+    transform: translateX(-50%);
+    border: 3px solid #d5b38b;
+    border-radius: 50%;
+    background: #a97862;
+    opacity: .65;
+}
+
+.office-tip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    margin: 12px 0;
+    padding: 12px 16px;
+    border: 1px solid #e7dfd0;
+    border-radius: 10px;
+    background: #fffaf0;
+    color: #65745d;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.office-tip > span:first-child {
+    color: #b58d68;
+    font-size: 18px;
+}
+
+.object-active {
+    animation: object-pop .35s ease;
+}
+
+@keyframes object-pop {
+    50% { transform: scale(1.12); }
+}
+
+@media (max-width: 650px) {
+    .office-room {
+        height: 330px;
+    }
+
+    .room-window {
+        width: 190px;
+        height: 140px;
+    }
+
+    .letter-shelf {
+        left: 3%;
+        transform: scale(.8);
+        transform-origin: left center;
+    }
+
+    .clock-object {
+        right: 5%;
+        transform: scale(.8);
+    }
+
+    .counter-object {
+        width: 210px;
+        height: 90px;
+    }
+
+    .mascot-object {
+        right: 1%;
+        transform: scale(.8);
+    }
+
+    .room-rug {
+        width: 230px;
+    }
+}
+
+/* =========================================
+   WINDLETTER V2.2 | 雾汀镇探索地图
+========================================= */
+
+.town-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.town-header h2 {
+    margin: 8px 0;
+    color: #455b4b;
+    font-family: Georgia, "Songti SC", serif;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.town-header p {
+    color: #858878;
+    font-size: 13px;
+}
+
+.town-progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 13px 20px;
+    border-radius: 13px;
+    background: #edf0e6;
+}
+
+.town-progress strong {
+    color: #526b52;
+    font-size: 23px;
+}
+
+.town-progress span {
+    color: #8b927e;
+    font-size: 11px;
+}
+
+.town-map-board {
+    position: relative;
+    min-height: 470px;
+    overflow: hidden;
+    border: 8px solid #e7ddc9;
+    border-radius: 18px;
+    background:
+        radial-gradient(ellipse at 20% 20%, #d7dfbd 0 13%, transparent 14%),
+        radial-gradient(ellipse at 85% 75%, #d5dfbb 0 18%, transparent 19%),
+        linear-gradient(135deg, #e6e7c9, #cbd9b8);
+    box-shadow: inset 0 0 35px #697e4b22;
+}
+
+.map-river {
+    position: absolute;
+    top: 40%;
+    left: -10%;
+    width: 125%;
+    height: 100px;
+    transform: rotate(-13deg);
+    border-radius: 50%;
+    background: #a9c8c4;
+    opacity: .85;
+}
+
+.map-road {
+    position: absolute;
+    z-index: 1;
+    border: 12px solid #e9d7b5;
+    border-radius: 50%;
+    opacity: .95;
+}
+
+.road-one {
+    top: 24%;
+    left: 10%;
+    width: 78%;
+    height: 50%;
+    transform: rotate(20deg);
+}
+
+.road-two {
+    top: 5%;
+    left: 38%;
+    width: 35%;
+    height: 95%;
+    transform: rotate(-28deg);
+}
+
+.road-three {
+    top: 38%;
+    left: -8%;
+    width: 75%;
+    height: 55%;
+    transform: rotate(-25deg);
+}
+
+.map-location {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 90px;
+    padding: 8px 10px;
+    border: 1px solid #e8dfca;
+    border-radius: 13px;
+    background: #fffaf0ed;
+    box-shadow: 0 5px 12px #4f624322;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.map-location:hover {
+    transform: translateY(-6px) scale(1.06);
+    box-shadow: 0 9px 18px #4f624344;
+}
+
+.map-location.visited {
+    border-color: #91a584;
+    background: #f2f4e8;
+}
+
+.map-location-icon {
+    font-size: 29px;
+}
+
+.map-location-name {
+    margin-top: 4px;
+    color: #52644c;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.map-location-status {
+    margin-top: 4px;
+    color: #9b967f;
+    font-size: 9px;
+}
+
+.location-1 { top: 8%; left: 12%; }
+.location-2 { top: 9%; right: 12%; }
+.location-3 { top: 39%; left: 39%; }
+.location-4 { bottom: 9%; left: 12%; }
+.location-5 { bottom: 10%; right: 13%; }
+.location-6 { top: 39%; right: 7%; }
+
+.map-decoration {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    opacity: .75;
+}
+
+.tree {
+    font-size: 25px;
+}
+
+.tree-one { top: 5%; left: 49%; }
+.tree-two { bottom: 8%; left: 49%; }
+.tree-three { top: 72%; left: 5%; }
+
+.map-cloud {
+    top: 3%;
+    right: 43%;
+    color: #fffdf0;
+    font-size: 35px;
+    opacity: .8;
+}
+
+.map-town-sign {
+    position: absolute;
+    z-index: 2;
+    right: 10px;
+    bottom: 8px;
+    color: #728365;
+    font-family: Georgia, serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.town-bottom {
+    margin-top: 28px;
+}
+
+.town-bottom h3 {
+    color: #455b4b;
+    font-family: Georgia, "Songti SC", serif;
+    font-weight: 500;
+}
+
+.town-bottom p {
+    color: #8d9184;
+    font-size: 13px;
+}
+
+.town-location-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.town-list-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid #e9e2d3;
+    border-radius: 10px;
+    background: #fffdf7;
+    color: #596b52;
+    cursor: pointer;
+}
+
+.town-list-item span:last-child {
+    margin-left: auto;
+}
+
+.town-list-item:hover {
+    background: #edf0e6;
+}
+
+.town-detail {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.town-detail-art {
+    display: grid;
+    min-height: 210px;
+    margin: 20px 0;
+    place-content: center;
+    border: 1px solid #e7ddc9;
+    border-radius: 17px;
+    background: linear-gradient(135deg, #dce4cf, #f1e7d1);
+    text-align: center;
+}
+
+.town-detail-art > span {
+    font-size: 75px;
+}
+
+.detail-art-caption {
+    margin-top: 10px;
+    color: #64745a;
+    font-family: Georgia, "Songti SC", serif;
+    font-size: 18px;
+}
+
+.town-detail h2 {
+    color: #455b4b;
+    font-family: Georgia, "Songti SC", serif;
+    font-weight: 500;
+}
+
+.detail-description {
+    color: #858878;
+    line-height: 1.8;
+}
+
+.npc-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin: 25px 0;
+    padding: 20px;
+    border: 1px solid #e7dfd0;
+    border-radius: 14px;
+    background: #fffaf0;
+}
+
+.npc-avatar {
+    display: grid;
+    flex: 0 0 45px;
+    width: 45px;
+    height: 45px;
+    place-items: center;
+    border-radius: 50%;
+    background: #e9eadc;
+    font-size: 24px;
+}
+
+.npc-name {
+    color: #a17f5e;
+    font-size: 12px;
+}
+
+.npc-speech {
+    margin: 8px 0 0;
+    color: #52644c;
+    font-family: Georgia, "Songti SC", serif;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.town-visit-reward {
+    padding: 14px;
+    border-radius: 10px;
+    background: #edf0e6;
+    color: #667b5e;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.town-detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+@media (max-width: 650px) {
+    .town-map-board {
+        min-height: 410px;
+    }
+
+    .map-location {
+        min-width: 75px;
+        padding: 6px;
+    }
+
+    .map-location-icon {
+        font-size: 23px;
+    }
+
+    .map-location-name {
+        font-size: 10px;
+    }
+
+    .town-location-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .town-header h2 {
+        font-size: 25px;
+    }
+}
+
+/* =========================================
+   WINDLETTER V2.3 | 邮局经营中心
+========================================= */
+
+.management-header {
+    margin-bottom: 25px;
+}
+
+.management-header h2 {
+    color: #455b4b;
+    font-family: Georgia, "Songti SC", serif;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.management-header > p:last-child {
+    color: #8d9184;
+    font-size: 13px;
+}
+
+.management-level {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 22px;
+    border-radius: 15px;
+    background: linear-gradient(120deg, #e5eadb, #f5ead7);
+}
+
+.management-level div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.management-level span {
+    color: #7c856e;
+    font-size: 12px;
+}
+
+.management-level strong {
+    color: #526b52;
+    font-family: Georgia, "Songti SC", serif;
+    font-size: 23px;
+}
+
+.management-title {
+    margin: 30px 0 15px;
+    color: #52644c;
+    font-family: Georgia, "Songti SC", serif;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.facility-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.facility-card {
+    padding: 18px 13px;
+    border: 1px solid #e9e2d3;
+    border-radius: 14px;
+    background: #fffdf7;
+}
+
+.facility-icon {
+    font-size: 30px;
+}
+
+.facility-card h4 {
+    margin: 12px 0 7px;
+    color: #52644c;
+    font-size: 15px;
+}
+
+.facility-card p {
+    min-height: 40px;
+    color: #8d9184;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.facility-level {
+    margin: 13px 0;
+    color: #9a896f;
+    font-size: 11px;
+}
+
+.facility-upgrade,
+.task-claim {
+    width: 100%;
+    padding: 10px 8px;
+    border: 0;
+    border-radius: 9px;
+    background: #74866b;
+    color: white;
+    font-size: 11px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.facility-upgrade:hover:not(:disabled),
+.task-claim:hover:not(:disabled) {
+    background: #536d54;
+}
+
+.facility-upgrade:disabled,
+.task-claim:disabled {
+    background: #e8e8df;
+    color: #99998c;
+    cursor: not-allowed;
+}
+
+.task-list {
+    display: grid;
+    gap: 12px;
+}
+
+.task-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 17px;
+    border: 1px solid #e9e2d3;
+    border-radius: 13px;
+    background: #fffdf7;
+}
+
+.task-card h4 {
+    margin: 0 0 6px;
+    color: #52644c;
+    font-size: 14px;
+}
+
+.task-card p {
+    margin: 0 0 7px;
+    color: #8d9184;
+    font-size: 11px;
+}
+
+.task-card span {
+    color: #a17f5e;
+    font-size: 11px;
+}
+
+.task-claim {
+    flex: 0 0 95px;
+}
+
+@media (max-width: 650px) {
+    .facility-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .facility-card p {
+        min-height: auto;
+    }
+
+    .management-level {
+        flex-direction: column;
+    }
+
+    .task-card {
+        align-items: flex-start;
+    }
+}
